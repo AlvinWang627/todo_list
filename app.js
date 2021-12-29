@@ -33,6 +33,15 @@ app.post('/todos', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//detail page
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id)
+    .lean()
+    .then((todo) => res.render('detail', { todo }))
+    .catch(error => console.log(error))
+})
+
 mongoose.connect('mongodb://localhost/todo-list') // 設定連線到 mongoDB
 
 // 取得資料庫連線狀態
