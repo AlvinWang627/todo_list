@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose') // 載入 mongoose
 const app = express()
 const bodyParser = require('body-parser')
+const port = process.env.PORT || 3000
 
 const Todo = require('./models/todo')
 
@@ -90,6 +91,6 @@ db.once('open', () => {
 })
 
 // 設定 port 3000
-app.listen(3000, () => {
-  console.log('App is running on http://localhost:3000')
+app.listen(port, () => {
+  console.log(`App is running on http://localhost:${port}`)
 })

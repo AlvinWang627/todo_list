@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const Todo = require('../todo') // 載入 todo model
+const MONGODB_RUL = process.env.MONGODB_RUL || 'mongodb://localhost/todo-list'
 
-mongoose.connect('mongodb://localhost/todo-list', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_RUL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 
