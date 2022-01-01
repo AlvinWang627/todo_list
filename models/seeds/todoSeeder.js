@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
 const Todo = require('../todo') // 載入 todo model
-const MONGODB_RUL = process.env.MONGODB_RUL || 'mongodb://localhost/todo-list'
-
-mongoose.connect(MONGODB_RUL, { useNewUrlParser: true, useUnifiedTopology: true })
+// config/mongoose.js
+// 如果在 Heroku 環境則使用 process.env.MONGODB_URI
+// 否則為本地環境，使用 mongodb://localhost/todo-list
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 
